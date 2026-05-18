@@ -1,12 +1,12 @@
 package com.example.demoday1.product;
 
 import com.example.demoday1.ErrorResponse;
-import com.example.demoday1.gateway.UserResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.TestRestTemplate;
 import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureTestRestTemplate;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.boot.test.context.SpringBootTest.*;
@@ -33,10 +33,11 @@ class ProductControllerTest {
     @Test
     public void case02(){
         // Act
-        ErrorResponse result
-                = restTemplate.getForObject("/api/products/2", ErrorResponse.class);
+        ResponseEntity<ErrorResponse> result
+                = restTemplate.getForEntity("/api/products/2", ErrorResponse.class);
         // Assert
-        assertEquals("Product not found", result.getError());
+        assertEquals(404, result.getStatusCode().value());
+        assertEquals("Product not found", result.getBody().getError());
     }
 
 }
