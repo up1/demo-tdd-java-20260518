@@ -1,5 +1,6 @@
 package com.example.demoday1.product;
 
+import com.example.demoday1.ErrorResponse;
 import com.example.demoday1.gateway.UserResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,15 @@ class ProductControllerTest {
         assertEquals(1, result.getId());
         assertEquals("Demo product name", result.getName());
         assertEquals(100, result.getPrice());
+    }
+
+    @Test
+    public void case02(){
+        // Act
+        ErrorResponse result
+                = restTemplate.getForObject("/api/products/2", ErrorResponse.class);
+        // Assert
+        assertEquals("Product not found", result.getError());
     }
 
 }

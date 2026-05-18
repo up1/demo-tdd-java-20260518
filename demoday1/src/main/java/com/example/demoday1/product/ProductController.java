@@ -9,6 +9,11 @@ public class ProductController {
 
     @GetMapping("/api/products/{id}")
     public ProductResponse getById(@PathVariable int id) {
+        // 404
+        if(id == 2) {
+            throw new ProductNotFoundException("Product not found");
+        }
+
         var product = new ProductResponse();
         product.setId(id);
         product.setName("Demo product name");
