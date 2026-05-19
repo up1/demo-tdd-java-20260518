@@ -18,6 +18,9 @@ public class ProductService {
 
         }
 
+        productRepository.save(new Product());
+        productRepository.save(new Product());
+
         var product = new ProductResponse();
         product.setId(id);
         product.setName("Demo product name");
