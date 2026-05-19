@@ -1,0 +1,1 @@
+insert into product (id, name, price) values (1, 'Test name 01', 100);
