@@ -29,7 +29,6 @@ class ProductRepositoryTest {
         // Arrange
         long id = 1;
         Product product1 = new Product();
-        product1.setId(id);
         product1.setName("Test name 01");
         productRepository.save(product1);
         // Act
