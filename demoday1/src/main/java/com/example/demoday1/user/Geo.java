@@ -1,4 +1,4 @@
-package com.example.demoday1.gateway;
+package com.example.demoday1.user;
 
 public class Geo{
 	private String lng;
